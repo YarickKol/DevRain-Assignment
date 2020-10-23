@@ -7,6 +7,6 @@ namespace BlogREST_API.Repositories
         bool SaveChanges();
         IEnumerable<T> GetAllItems();
         T GetItemById(int id);
-        void CreateItem(T item);
+        void CreateItem(T item);        
     }
 }

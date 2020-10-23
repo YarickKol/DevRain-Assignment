@@ -24,7 +24,7 @@ namespace BlogREST_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BlogContext>(c => c.UseSqlServer
-            (Configuration.GetConnectionString("CommandStringConnection")));
+            (Configuration.GetConnectionString("BlogStringConnection")));
             services.AddControllers();
             services.AddSwaggerGen();
 
