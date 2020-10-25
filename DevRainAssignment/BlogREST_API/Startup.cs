@@ -31,9 +31,8 @@ namespace BlogREST_API
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IDefaultActions<Blog>, SQLBlogRepository>();
-            services.AddScoped<IDefaultActions<Comment>, SQLCommentRepository>();
-            services.AddScoped<ILinkedActions<Comment>, LinkedInfo>();            
+            services.AddScoped<IBlogRepository, BlogRepository>();  
+            services.AddScoped<ICommentRepository, CommentRepository>();
         }
 
 

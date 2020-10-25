@@ -1,15 +1,17 @@
-﻿using BlogREST_API.Models;
+﻿using BlogREST_API.Interfaces;
+using BlogREST_API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BlogREST_API.Repositories
 {
-    public class SQLCommentRepository : IDefaultActions<Comment>
+    public class CommentRepository : ICommentRepository
     {
         private readonly BlogContext _context;
 
-        public SQLCommentRepository(BlogContext context)
+        public CommentRepository(BlogContext context)
         {
             _context = context;
         }
@@ -34,6 +36,10 @@ namespace BlogREST_API.Repositories
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
+        }
+        public IEnumerable<Comment> GetLinkedInfo(int id)
+        {
+            return _context.Comments.Where(c => c.Blog.Id == id).ToList();
         }
     }
 }

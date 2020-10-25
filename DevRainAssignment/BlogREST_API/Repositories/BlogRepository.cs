@@ -1,15 +1,17 @@
-﻿using BlogREST_API.Models;
+﻿using BlogREST_API.Interfaces;
+using BlogREST_API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BlogREST_API.Repositories
 {
-    public class SQLBlogRepository : IDefaultActions<Blog>
+    public class BlogRepository:IBlogRepository
     {
         private readonly BlogContext _context;
 
-        public SQLBlogRepository(BlogContext context)
+        public BlogRepository(BlogContext context)
         {
             _context = context;
         }
@@ -36,7 +38,5 @@ namespace BlogREST_API.Repositories
         {
             return (_context.SaveChanges() >= 0);
         }
-
-       
     }
 }

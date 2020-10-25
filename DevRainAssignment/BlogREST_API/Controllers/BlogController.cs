@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlogREST_API.DTO;
+using BlogREST_API.Interfaces;
 using BlogREST_API.Models;
 using BlogREST_API.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,10 @@ namespace BlogREST_API.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
-        private readonly IDefaultActions<Blog> _repository;        
+        private readonly IBlogRepository _repository;        
         private readonly IMapper _mapper;        
 
-        public BlogController(IDefaultActions<Blog> repository, IMapper mapper)
+        public BlogController(IBlogRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;            
