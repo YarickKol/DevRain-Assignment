@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
+using BlogREST_API.DTO;
 using BlogREST_API.Models;
 using BlogREST_API.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogREST_API.Controllers
 {
@@ -13,50 +11,43 @@ namespace BlogREST_API.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
-        private readonly IRepository<Blog> _repository;        
-        private readonly IMapper _mapper;
+        private readonly IDefaultActions<Blog> _repository;        
+        private readonly IMapper _mapper;        
 
-        public BlogController(IRepository<Blog> repository, IMapper mapper)
+        public BlogController(IDefaultActions<Blog> repository, IMapper mapper)
         {
             _repository = repository;
-            _mapper = mapper;
+            _mapper = mapper;            
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Blog>> GetAllBlogs()
+        public ActionResult<IEnumerable<ReadBlogDTO>> GetAllBlogs()
         {
             var blogItems = _repository.GetAllItems();
 
-            return Ok(blogItems);
+            return Ok(_mapper.Map<IEnumerable<ReadBlogDTO>>(blogItems));
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Blog> GetBlogById(int id)
+        public ActionResult<ReadBlogDTO> GetBlogById(int id)
         {
             var blogItem = _repository.GetItemById(id);
             if (blogItem != null)
-                return Ok(blogItem);
+                return Ok(_mapper.Map<ReadBlogDTO>(blogItem));
             return NotFound();
         }
 
-        //[HttpGet("{id}")]
-        //public ActionResult<IEnumerable<Comment>> GetCommentsofBlogById(int id)
-        //{
-        //    var blogItems = _repository.GetAllCommentsOfBlogById(id);
-        //    return Ok(blogItems);
-        //}
+        [HttpPost]
+        public ActionResult<CreateBlogDTO> CreateCommand(CreateBlogDTO createBlogDTO)
+        {
+            var blogModel = _mapper.Map<Blog>(createBlogDTO);
+            _repository.CreateItem(blogModel);
+            _repository.SaveChanges();  
 
-        //[HttpPost]
-        //public ActionResult<CommandCreateDTO> CreateCommand(CommandCreateDTO commandCreateDTO)
-        //{
-        //    var commandModel = _mapper.Map<Command>(commandCreateDTO);
-        //    _repository.CreateCommand(commandModel);
-        //    _repository.SaveChanges();
+            var commandReadDTO = _mapper.Map<CreateBlogDTO>(blogModel);
 
-        //    var commandReadDTO = _mapper.Map<CommandReadDTO>(commandModel);
-
-        //    return Ok(commandReadDTO);
-        //}
+            return Ok(commandReadDTO);
+        }
 
     }
 }

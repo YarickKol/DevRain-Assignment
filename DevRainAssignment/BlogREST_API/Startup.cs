@@ -1,4 +1,5 @@
 using AutoMapper;
+using BlogREST_API.Interfaces;
 using BlogREST_API.Models;
 using BlogREST_API.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -30,9 +31,11 @@ namespace BlogREST_API
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IRepository<Blog>, SQLBlogRepository>();
-            services.AddScoped<IRepository<Comment>, SQLCommentRepository>();
+            services.AddScoped<IDefaultActions<Blog>, SQLBlogRepository>();
+            services.AddScoped<IDefaultActions<Comment>, SQLCommentRepository>();
+            services.AddScoped<ILinkedActions<Comment>, LinkedInfo>();            
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -2,11 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogREST_API.Repositories
 {
-    public class SQLCommentRepository : IRepository<Comment>
+    public class SQLCommentRepository : IDefaultActions<Comment>
     {
         private readonly BlogContext _context;
 

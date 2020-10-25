@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BlogREST_API.Repositories
 {
-    public class SQLBlogRepository : IRepository<Blog>
+    public class SQLBlogRepository : IDefaultActions<Blog>
     {
         private readonly BlogContext _context;
 
@@ -13,6 +13,7 @@ namespace BlogREST_API.Repositories
         {
             _context = context;
         }
+
         public void CreateItem(Blog item)
         {
             if (item == null)
@@ -36,9 +37,6 @@ namespace BlogREST_API.Repositories
             return (_context.SaveChanges() >= 0);
         }
 
-        public IEnumerable<Comment> GetAllCommentsOfBlogById(int id)
-        {
-            return _context.Comments.Where(c => c.Blog.Id == id).ToList();            
-        }
+       
     }
 }

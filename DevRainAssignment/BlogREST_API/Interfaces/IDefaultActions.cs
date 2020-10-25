@@ -2,7 +2,7 @@
 
 namespace BlogREST_API.Repositories
 {
-    public interface IRepository <T> where T: class
+    public interface IDefaultActions <T> where T: class
     {
         bool SaveChanges();
         IEnumerable<T> GetAllItems();
