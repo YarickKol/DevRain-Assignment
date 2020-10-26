@@ -39,15 +39,15 @@ namespace BlogREST_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult<CreateBlogDTO> CreateCommand(CreateBlogDTO createBlogDTO)
+        public ActionResult<CreateBlogDTO> CreateBlog(CreateBlogDTO createBlogDTO)
         {
             var blogModel = _mapper.Map<Blog>(createBlogDTO);
             _repository.CreateItem(blogModel);
             _repository.SaveChanges();  
 
-            var commandReadDTO = _mapper.Map<CreateBlogDTO>(blogModel);
+            var blogReadDTO = _mapper.Map<ReadBlogDTO>(blogModel);
 
-            return Ok(commandReadDTO);
+            return Ok(blogReadDTO);
         }
 
     }

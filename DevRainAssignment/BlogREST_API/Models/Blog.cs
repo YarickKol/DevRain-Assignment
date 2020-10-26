@@ -20,9 +20,9 @@ namespace BlogREST_API.Models
         [Required]        
         public string Text { get; set; }
 
-        [Required]
+        
         public DateTime Published{ get; set; }
 
-        public ICollection<Comment> Comments { get; set;}
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

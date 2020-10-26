@@ -5,6 +5,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201020211827_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201020211827_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201025222738_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201025222738_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201025222956_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201025222956_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201025223429_InitiallMigration.cs" />
+    <Compile Remove="Migrations\20201025223429_InitiallMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201026010716_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201026010716_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201026011324_InitiallMigration.cs" />
+    <Compile Remove="Migrations\20201026011324_InitiallMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201026011700_InitiallMigration.cs" />
+    <Compile Remove="Migrations\20201026011700_InitiallMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201026012418_InitiallMigration.cs" />
+    <Compile Remove="Migrations\20201026012418_InitiallMigration.Designer.cs" />
+    <Compile Remove="Migrations\20201026012544_InitialMigration.cs" />
+    <Compile Remove="Migrations\20201026012544_InitialMigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
@@ -17,6 +38,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 

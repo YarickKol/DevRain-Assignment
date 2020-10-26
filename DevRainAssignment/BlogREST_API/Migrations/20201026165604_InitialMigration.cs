@@ -32,7 +32,7 @@ namespace BlogREST_API.Migrations
                     UserName = table.Column<string>(maxLength: 250, nullable: false),
                     Text = table.Column<string>(nullable: false),
                     Published = table.Column<DateTime>(nullable: false),
-                    BlogId = table.Column<int>(nullable: true)
+                    BlogId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +42,7 @@ namespace BlogREST_API.Migrations
                         column: x => x.BlogId,
                         principalTable: "Blogs",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
