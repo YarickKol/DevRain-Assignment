@@ -3,13 +3,15 @@ using BlogREST_API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogREST_API.Repositories
 {
+    /// <summary>
+    /// Class realizes methods of IBlogRepository interface
+    /// </summary>
     public class BlogRepository:IBlogRepository
     {
-        private readonly BlogContext _context;
+        private readonly BlogContext _context; // database context
 
         public BlogRepository(BlogContext context)
         {

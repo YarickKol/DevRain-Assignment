@@ -6,9 +6,12 @@ using System.Linq;
 
 namespace BlogREST_API.Repositories
 {
+    /// <summary>
+    /// Class realizes methods of ICommentRepository interface
+    /// </summary>
     public class CommentRepository : ICommentRepository
     {
-        private readonly BlogContext _context;
+        private readonly BlogContext _context; // database context
 
         public CommentRepository(BlogContext context)
         {

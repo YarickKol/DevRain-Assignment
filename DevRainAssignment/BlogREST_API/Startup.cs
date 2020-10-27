@@ -2,6 +2,7 @@ using AutoMapper;
 using BlogREST_API.Interfaces;
 using BlogREST_API.Models;
 using BlogREST_API.Repositories;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,12 +26,12 @@ namespace BlogREST_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BlogContext>(c => c.UseSqlServer
-            (Configuration.GetConnectionString("BlogStringConnection")));
+            (Configuration.GetConnectionString("BlogStringConnection"))); //Creating DB and connecting by string connection
             services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(); // using Swagger
 
+            //using Automapper  and scoping interfaces with their realization
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
             services.AddScoped<IBlogRepository, BlogRepository>();  
             services.AddScoped<ICommentRepository, CommentRepository>();
         }

@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlogREST_API.Models
 {
+    /// <summary>
+    /// Blog model class
+    /// </summary>
     public class Blog
     {
         [Key]
@@ -23,6 +26,6 @@ namespace BlogREST_API.Models
         
         public DateTime Published{ get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>(); // list of comments of blog
     }
 }

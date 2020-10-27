@@ -1,12 +1,12 @@
 ﻿using BlogREST_API.Models;
 using BlogREST_API.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogREST_API.Interfaces
 {
+    /// <summary>
+    /// Interface that unites methods of IDefaultActions of Blog type for
+    /// Blog Repository realization
+    /// </summary>
     public interface IBlogRepository: IDefaultActions<Blog>
     {
 

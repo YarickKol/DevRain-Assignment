@@ -1,9 +1,10 @@
-﻿using BlogREST_API.Models;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace BlogREST_API.DTO
 {
+    /// <summary>
+    /// Data trasnfer object for mapping with Comment model 
+    /// to create Comment object
+    /// </summary>
     public class CreateCommentDTO
     {        
         public string UserName { get; set; }
