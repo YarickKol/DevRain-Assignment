@@ -25,6 +25,7 @@ namespace BlogREST_API.Controllers
         /// Gets all blog DTO data  from database
         /// </summary>
         /// <returns>code of response (200)</returns>
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)] //executing attribute caching
         [HttpGet]
         public ActionResult<IEnumerable<ReadBlogDTO>> GetAllBlogs()
         {

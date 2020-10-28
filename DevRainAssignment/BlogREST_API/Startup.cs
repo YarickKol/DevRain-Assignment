@@ -34,6 +34,9 @@ namespace BlogREST_API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IBlogRepository, BlogRepository>();  
             services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddMemoryCache(); // Add caching to project
         }
 
 
@@ -54,6 +57,8 @@ namespace BlogREST_API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
